@@ -476,6 +476,106 @@
     /* ── DUAL SCENARIO ── */
     .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
     @media(max-width:640px){ .dual-grid { grid-template-columns: 1fr; } }
+
+    /* ── TABLE SCROLL WRAPPER ── */
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 14px; }
+    .table-scroll table { min-width: 540px; }
+
+    /* ── GAP INNER GRID ── */
+    .gap-inner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* ── MOBILE 768px ── */
+    @media (max-width: 768px) {
+      .hero { padding: 36px 16px 28px; }
+      .hero-scores { gap: 10px; }
+      .hero-score { padding: 12px 16px; min-width: 100px; }
+      .hero-score .val { font-size: 1.5rem; }
+
+      .container { padding: 30px 14px 56px; }
+      section { margin-bottom: 40px; }
+
+      .verdict-card { flex-direction: column; gap: 12px; padding: 20px 18px; }
+      .verdict-icon { font-size: 2rem; }
+
+      .gap-inner-grid { grid-template-columns: 1fr; }
+      .gap-card { padding: 18px 16px; }
+
+      .maturity-item .mlabel { width: 130px; font-size: .8rem; }
+
+      .exec-grid { grid-template-columns: repeat(2, 1fr); }
+      .exec-item { padding: 12px 14px; }
+
+      .final-grid { grid-template-columns: repeat(2, 1fr); }
+      .final-card { padding: 16px; }
+
+      .stage-card { padding: 16px 18px; }
+      .section-title { font-size: 1.1rem; }
+    }
+
+    /* ── MOBILE 480px ── */
+    @media (max-width: 480px) {
+      .hero { padding: 26px 12px 20px; }
+      .hero h1 { font-size: 1.25rem; line-height: 1.4; }
+      .hero p { font-size: .82rem; }
+      .hero-scores { gap: 7px; }
+      .hero-score { padding: 10px 10px; min-width: 72px; }
+      .hero-score .val { font-size: 1.15rem; }
+      .hero-score .lbl { font-size: .6rem; }
+
+      .maturity-item { gap: 8px; }
+      .maturity-item .mlabel { width: 80px; font-size: .7rem; }
+      .maturity-item .mscore { width: 26px; font-size: .72rem; }
+
+      .exec-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .exec-item { padding: 10px; gap: 8px; }
+      .exec-icon { font-size: 1.25rem; }
+      .exec-item .label { font-size: .72rem; }
+      .exec-item .status { font-size: .75rem; }
+
+      .final-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .final-card { padding: 14px; }
+      .final-card .big { font-size: 1.6rem; }
+      .ring { width: 66px; height: 66px; }
+      .ring-inner { width: 48px; height: 48px; font-size: .82rem; }
+
+      .chip { font-size: .6rem; padding: 2px 7px; margin-right: 4px; }
+
+      .qa-col { padding: 18px 14px; }
+      .qa-col h4 { font-size: .82rem; }
+      .qa-col ul li { font-size: .78rem; }
+
+      .verdict-card { padding: 16px; }
+      .verdict-card h3 { font-size: .92rem; }
+      .verdict-card p { font-size: .8rem; }
+
+      .gap-card h4 { font-size: .88rem; }
+      .gap-card h4 .num { width: 22px; height: 22px; font-size: .65rem; }
+      .gap-sub ul li { font-size: .78rem; }
+
+      .section-title { font-size: 1rem; }
+      .section-title .icon { width: 32px; height: 32px; font-size: .85rem; }
+
+      .heat-block { padding: 14px; }
+      .heat-block ul li { font-size: .76rem; padding: 5px 10px; }
+
+      .prob-card { padding: 16px 10px; }
+      .prob-card .pct { font-size: 1.3rem; }
+      .prob-card .year { font-size: .75rem; }
+
+      .summary-stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-box { padding: 12px 14px; }
+      .stat-box .sv { font-size: 1.3rem; }
+      .stat-box .sl { font-size: .68rem; }
+
+      .scenario-card { padding: 18px; }
+      .scenario-card .sc-score { font-size: 2.2rem; }
+
+      .matrix-table th, .matrix-table td { padding: 10px 12px; font-size: .8rem; }
+      .risks-table th, .risks-table td { padding: 10px 12px; font-size: .8rem; }
+      .factors-table th, .factors-table td { padding: 10px 12px; font-size: .8rem; }
+
+      footer { padding: 20px 14px; font-size: .72rem; }
+    }
     .scenario-card { border-radius: 16px; padding: 26px; border: 1px solid transparent; }
     .scenario-card.policy {
       background: linear-gradient(135deg, rgba(34,197,94,.1), rgba(34,197,94,.04));
@@ -621,6 +721,7 @@
     <p style="font-size:.85rem; color:var(--muted); margin-bottom:18px;">
       تم احتساب التقييم النهائي بناءً على مدى توفر العناصر الأساسية المطلوبة في أي استراتيجية وطنية للأداء العالي والبرامج الأولمبية.
     </p>
+    <div class="table-scroll">
     <table class="score-table">
       <thead>
         <tr>
@@ -710,6 +811,7 @@
         </tr>
       </tfoot>
     </table>
+    </div><!-- /table-scroll -->
     <div class="summary-stats">
       <div class="stat-box">
         <div class="sv score-red">24</div>
@@ -745,7 +847,7 @@
           <span class="num">1</span>
           غياب تحليل الوضع الراهن — Current State Analysis
         </h4>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; flex-wrap:wrap;">
+        <div class="gap-inner-grid">
           <div class="gap-sub">
             <strong>لا يوجد في الوثيقة: على سبيل الميثال لا للحصر</strong>
             <ul>
@@ -769,7 +871,7 @@
 
       <div class="gap-card critical">
         <h4><span class="num">2</span>غياب Baseline</h4>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div class="gap-inner-grid">
           <div class="gap-sub">
             <strong> لا يوجد خط أساس : على سبيل الميثال لا للحصر </strong>
             <ul>
@@ -1231,7 +1333,7 @@
 </div>
 
 <footer>
-  تقرير تقييم البرنامج الوطني — السباحة السعودية &nbsp;|&nbsp; 2026
+  تقرير 1تقييم البرنامج الوطني — السباحة السعودية &nbsp;|&nbsp; 2026
 </footer>
 
 </body>
