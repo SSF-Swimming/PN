@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> تقييم البرنامج الوطني — السباحة السعودية</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap');
+
+    :root {
+      --bg:        #0a0e1a;
+      --surface:   #111827;
+      --card:      #1a2235;
+      --border:    #1e2d45;
+      --accent:    #3b82f6;
+      --accent2:   #6366f1;
+      --red:       #ef4444;
+      --orange:    #f97316;
+      --green:     #22c55e;
+      --yellow:    #eab308;
+      --text:      #e2e8f0;
+      --muted:     #94a3b8;
+      --gold:      #fbbf24;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+      padding: 60px 40px 50px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,.18) 0%, transparent 70%);
+    }
+    .hero .badge {
+      display: inline-block;
+      background: rgba(59,130,246,.15);
+      border: 1px solid rgba(59,130,246,.4);
+      color: #93c5fd;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 0 auto 30px;
+      font-size: .95rem;
+    }
+    .hero-scores {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .hero-score {
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 30px;
+      text-align: center;
+      min-width: 140px;
+    }
+    .hero-score .val {
+      font-size: 2rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .hero-score .lbl { font-size: .75rem; color: var(--muted); }
+    .score-red  { color: var(--red); }
+    .score-org  { color: var(--orange); }
+    .score-yel  { color: var(--yellow); }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px 80px; }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .section-title .line {
+      flex: 1; height: 1px;
+      background: linear-gradient(to left, transparent, var(--border));
+    }
+    .section-title .icon {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      display: grid; place-items: center;
+      font-size: 1rem;
+      background: rgba(59,130,246,.15);
+      border: 1px solid rgba(59,130,246,.3);
+    }
+    section { margin-bottom: 56px; }
+
+    /* ── VERDICT CARD ── */
+    .verdict-card {
+      background: linear-gradient(135deg, rgba(239,68,68,.12), rgba(239,68,68,.04));
+      border: 1px solid rgba(239,68,68,.35);
+      border-radius: 16px;
+      padding: 28px 32px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    .verdict-icon {
+      font-size: 2.4rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .verdict-card h3 { font-size: 1.1rem; color: var(--red); margin-bottom: 8px; }
+    .verdict-card p  { color: var(--muted); font-size: .9rem; }
+
+    /* ── EXEC ASSESSMENT TABLE ── */
+    .exec-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .exec-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .exec-item:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+    .exec-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .exec-item .label { font-size: .85rem; color: var(--muted); margin-bottom: 4px; }
+    .exec-item .status { font-size: .9rem; font-weight: 700; }
+    .status-ok   { color: var(--green); }
+    .status-warn { color: var(--yellow); }
+    .status-miss { color: var(--red); }
+
+    /* ── GAPS ── */
+    .gaps-list { display: flex; flex-direction: column; gap: 20px; }
+    .gap-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-right: 4px solid;
+      border-radius: 14px;
+      padding: 22px 26px;
+    }
+    .gap-card.critical { border-right-color: var(--red); }
+    .gap-card.high     { border-right-color: var(--orange); }
+    .gap-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .gap-card h4 .num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: .75rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .gap-card.critical h4 .num { background: rgba(239,68,68,.2); color: var(--red); }
+    .gap-card.high     h4 .num { background: rgba(249,115,22,.2); color: var(--orange); }
+    .gap-sub { margin-top: 14px; }
+    .gap-sub strong { font-size: .8rem; color: var(--muted); display: block; margin-bottom: 6px; }
+    .gap-sub ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+    .gap-sub ul li::before { content: '▸ '; color: var(--accent); }
+    .gap-sub ul li { font-size: .85rem; }
+    .risk-badge {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 3px 12px;
+      border-radius: 50px;
+      font-size: .75rem; font-weight: 700;
+    }
+    .risk-high { background: rgba(239,68,68,.15); color: var(--red); border: 1px solid rgba(239,68,68,.3); }
+
+    /* ── MATRIX ── */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .matrix-table th {
+      background: rgba(59,130,246,.1);
+      color: #93c5fd;
+      padding: 14px 20px;
+      text-align: right;
+      font-size: .85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .matrix-table td {
+      padding: 12px 20px;
+      font-size: .88rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .matrix-table tr:last-child td { border-bottom: none; }
+    .matrix-table tr:hover td { background: rgba(255,255,255,.02); }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 50px; font-size: .78rem; font-weight: 700;
+    }
+    .tag-ok   { background: rgba(34,197,94,.12); color: var(--green); border: 1px solid rgba(34,197,94,.25); }
+    .tag-warn { background: rgba(234,179,8,.12);  color: var(--yellow); border: 1px solid rgba(234,179,8,.25); }
+    .tag-miss { background: rgba(239,68,68,.12); color: var(--red);   border: 1px solid rgba(239,68,68,.25); }
+
+    /* ── HEATMAP ── */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:600px){ .heatmap-grid { grid-template-columns: 1fr; } }
+    .heat-block {
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid transparent;
+    }
+    .heat-block h4 { font-size: .85rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .heat-block ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .heat-block ul li {
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: .82rem;
+    }
+    .heat-red  { background: rgba(239,68,68,.08); border-color: rgba(239,68,68,.3); }
+    .heat-red  h4  { color: var(--red); }
+    .heat-red  li  { background: rgba(239,68,68,.1); }
+    .heat-org  { background: rgba(249,115,22,.08); border-color: rgba(249,115,22,.3); }
+    .heat-org  h4  { color: var(--orange); }
+    .heat-org  li  { background: rgba(249,115,22,.1); }
+    .heat-grn  { background: rgba(34,197,94,.08); border-color: rgba(34,197,94,.3); }
+    .heat-grn  h4  { color: var(--green); }
+    .heat-grn  li  { background: rgba(34,197,94,.1); }
+
+    /* ── MATURITY BARS ── */
+    .maturity-list { display: flex; flex-direction: column; gap: 14px; }
+    .maturity-item { display: flex; align-items: center; gap: 16px; }
+    .maturity-item .mlabel { width: 180px; font-size: .85rem; flex-shrink: 0; }
+    .bar-track {
+      flex: 1;
+      height: 10px;
+      background: rgba(255,255,255,.07);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: linear-gradient(to left, var(--accent2), var(--accent));
+      transition: width 1s ease;
+    }
+    .maturity-item .mscore { width: 36px; text-align: right; font-size: .85rem; font-weight: 700; color: var(--accent); }
+
+    /* ── Q&A BLOCK ── */
+    .qa-block {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .qa-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    @media(max-width:640px){ .qa-row { grid-template-columns: 1fr; } }
+    .qa-col {
+      padding: 28px;
+      border-left: 1px solid var(--border);
+    }
+    .qa-col:last-child { border-left: none; }
+    .qa-col h4 { font-size: .9rem; font-weight: 700; margin-bottom: 14px; }
+    .qa-col.miss h4 { color: var(--red); }
+    .qa-col.ok   h4 { color: var(--green); }
+    .qa-col ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .qa-col ul li { font-size: .84rem; padding-right: 14px; position: relative; }
+    .qa-col.miss li::before { content: '✗'; position: absolute; right: 0; color: var(--red); }
+    .qa-col.ok   li::before { content: '✓'; position: absolute; right: 0; color: var(--green); }
+
+    /* ── RISKS TABLE ── */
+    .risks-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .risks-table th {
+      background: rgba(239,68,68,.1);
+      color: #fca5a5;
+      padding: 14px 20px;
+      text-align: right;
+      font-size: .85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .risks-table td {
+      padding: 12px 20px;
+      font-size: .87rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .risks-table tr:last-child td { border-bottom: none; }
+    .risks-table tr:hover td { background: rgba(255,255,255,.02); }
+
+    /* ── FINAL VERDICT ── */
+    .final-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .final-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .final-card .big {
+      font-size: 2.4rem; font-weight: 900; line-height: 1;
+      margin-bottom: 8px;
+    }
+    .final-card .desc { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+    .ring {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      display: grid; place-items: center;
+      margin: 0 auto 12px;
+      font-size: 1.5rem; font-weight: 900;
+    }
+    .ring-red { background: conic-gradient(var(--red) calc(32 * 3.6deg), rgba(255,255,255,.06) 0); }
+    .ring-inner {
+      width: 66px; height: 66px;
+      background: var(--card);
+      border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 1.1rem; font-weight: 900;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: var(--muted);
+      font-size: .78rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── PROGRESS CIRCLES ── */
+    .prob-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    @media(max-width:500px){ .prob-grid { grid-template-columns: 1fr; } }
+    .prob-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 16px;
+      text-align: center;
+    }
+    .prob-card svg { display: block; margin: 0 auto 12px; }
+    .prob-card .year { font-size: .85rem; font-weight: 700; color: var(--muted); }
+    .prob-card .pct  { font-size: 1.6rem; font-weight: 900; }
+
+    /* tags */
+    .chip {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .chip-red { background: rgba(239,68,68,.15); color: var(--red); }
+    .chip-grn { background: rgba(34,197,94,.15);  color: var(--green); }
+
+    /* ── SCORING TABLE ── */
+    .score-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--card); border-radius: 14px; overflow: hidden;
+    }
+    .score-table th {
+      background: rgba(99,102,241,.12); color: #a5b4fc;
+      padding: 13px 18px; text-align: right; font-size: .82rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .score-table td {
+      padding: 11px 18px; font-size: .84rem;
+      border-bottom: 1px solid var(--border); vertical-align: middle;
+    }
+    .score-table tr:last-child td { border-bottom: none; }
+    .score-table tr:hover td { background: rgba(255,255,255,.02); }
+    .score-table .weight { color: var(--muted); font-size: .78rem; }
+    .score-table .pts { font-weight: 700; }
+    .score-table tfoot td {
+      background: rgba(99,102,241,.08); font-weight: 700;
+      padding: 14px 18px; border-top: 2px solid rgba(99,102,241,.3);
+    }
+
+    /* ── SUMMARY STATS ── */
+    .summary-stats {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 14px; margin-top: 16px;
+    }
+    .stat-box {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px; text-align: center;
+    }
+    .stat-box .sv { font-size: 1.6rem; font-weight: 900; margin-bottom: 4px; }
+    .stat-box .sl { font-size: .75rem; color: var(--muted); }
+
+    /* ── STAGE BADGE ── */
+    .stage-card {
+      background: linear-gradient(135deg, rgba(249,115,22,.1), rgba(249,115,22,.04));
+      border: 1px solid rgba(249,115,22,.3); border-radius: 14px;
+      padding: 22px 26px; margin-top: 16px;
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .stage-badge {
+      background: rgba(249,115,22,.15); border: 1px solid rgba(249,115,22,.4);
+      color: var(--orange); padding: 8px 18px; border-radius: 50px;
+      font-size: .85rem; font-weight: 700; white-space: nowrap;
+    }
+    .stage-desc { font-size: .85rem; color: var(--muted); }
+
+    /* ── FACTORS TABLE ── */
+    .factors-table {
+      width: 100%; border-collapse: collapse;
+      background: var(--card); border-radius: 14px; overflow: hidden; margin-bottom: 20px;
+    }
+    .factors-table th {
+      background: rgba(59,130,246,.1); color: #93c5fd;
+      padding: 13px 18px; text-align: right; font-size: .83rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .factors-table td {
+      padding: 11px 18px; font-size: .85rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .factors-table tr:last-child td { border-bottom: none; }
+    .factors-table tr:hover td { background: rgba(255,255,255,.02); }
+
+    /* ── DUAL SCENARIO ── */
+    .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+    @media(max-width:640px){ .dual-grid { grid-template-columns: 1fr; } }
+    .scenario-card { border-radius: 16px; padding: 26px; border: 1px solid transparent; }
+    .scenario-card.policy {
+      background: linear-gradient(135deg, rgba(34,197,94,.1), rgba(34,197,94,.04));
+      border-color: rgba(34,197,94,.3);
+    }
+    .scenario-card.strategy {
+      background: linear-gradient(135deg, rgba(239,68,68,.1), rgba(239,68,68,.04));
+      border-color: rgba(239,68,68,.3);
+    }
+    .scenario-card h4 { font-size: .88rem; font-weight: 700; margin-bottom: 10px; }
+    .scenario-card.policy h4  { color: var(--green); }
+    .scenario-card.strategy h4 { color: var(--red); }
+    .scenario-card .sc-score { font-size: 2.8rem; font-weight: 900; line-height: 1; margin-bottom: 12px; }
+    .scenario-card.policy .sc-score  { color: var(--green); }
+    .scenario-card.strategy .sc-score { color: var(--red); }
+    .scenario-card ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .scenario-card ul li { font-size: .82rem; padding-right: 16px; position: relative; color: var(--muted); }
+    .scenario-card.policy   ul li::before { content: '✓'; position: absolute; right: 0; color: var(--green); }
+    .scenario-card.strategy ul li::before { content: '✗'; position: absolute; right: 0; color: var(--red); }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge"> تقرير تقييم  — 2026</div>
+  <h1>تحليل وثيقة <span> البرنامج الوطني</span><br/> السباحة السعودية</h1>
+  <p>تحليل مهني شامل للوثيقة المقدّمة وتقييم مدى استيفائها لمتطلبات الاستراتيجية الأولمبية الوطنية عالية الأداء</p>
+
+  <div class="hero-scores">
+    <div class="hero-score">
+      <div class="val score-red">32<small style="font-size:1rem">/100</small></div>
+      <div class="lbl">تقييم المشروع</div>
+    </div>
+    <div class="hero-score">
+      <div class="val score-org">1.1<small style="font-size:1rem">/5</small></div>
+      <div class="lbl">النضج الاستراتيجي</div>
+    </div>
+    <div class="hero-score">
+      <div class="val score-red">35%</div>
+      <div class="lbl">احتمالية نجاح 2028</div>
+    </div>
+    <div class="hero-score">
+      <div class="val score-red">25%</div>
+      <div class="lbl">احتمالية نجاح 2032</div>
+    </div>
+    <div class="hero-score">
+      <div class="val score-red">20%</div>
+      <div class="lbl">احتمالية نجاح 2036</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <!-- VERDICT -->
+  <section>
+    <div class="section-title">
+      <span class="icon">⚖️</span>
+      الحكم المهني
+      <span class="line"></span>
+    </div>
+    <div class="verdict-card">
+      <div class="verdict-icon">❌</div>
+      <div>
+        <h3>هذه الوثيقة ليست استراتيجية وطنية أولمبية</h3>
+        <p>
+          هي <strong style="color:#fff">سياسة تشغيلية لاختيار اللاعبين</strong> وإدارة برنامج تدريبي للمواهب خلال موسم 2025-2026.
+          تُجيب الوثيقة فقط عن: <em>من سيتم اختياره؟ ما أزمنة التأهل؟ وما المعسكرات المقترحة؟</em>
+          بينما تخفق في الإجابة عن: أين نحن اليوم؟ وأين نريد الوصول؟ وكيف سنقيس النجاح؟
+        </p>
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <span class="chip chip-grn">Managing a talent training program ✓</span>
+          <span class="chip chip-red">National Olympic High Performance Strategy ✗</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- EXEC ASSESSMENT -->
+  <section>
+    <div class="section-title">
+      <span class="icon">📊</span>
+      Executive Assessment/التقييم التنفيذي
+      <span class="line"></span>
+    </div>
+    <div class="exec-grid">
+      <div class="exec-item">
+        <div class="exec-icon">🗺️</div>
+        <div>
+          <div class="label">استراتيجية وطنية</div>
+          <div class="status status-miss">❌ غير متوفر</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="exec-icon">🏅</div>
+        <div>
+          <div class="label">خطة أولمبية طويلة المدى</div>
+          <div class="status status-miss">❌ غير متوفر</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="exec-icon">👥</div>
+        <div>
+          <div class="label">سياسة اختيار لاعبين</div>
+          <div class="status status-ok">✅ متوفر</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="exec-icon">🏕️</div>
+        <div>
+          <div class="label">إدارة معسكرات ومشاركات</div>
+          <div class="status status-ok">✅ متوفر</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="exec-icon">⚡</div>
+        <div>
+          <div class="label">نظام تطوير مواهب</div>
+          <div class="status status-warn">⚠️ جزئي</div>
+        </div>
+      </div>
+      <div class="exec-item">
+        <div class="exec-icon">🎯</div>
+        <div>
+          <div class="label">نظام أداء عالي متكامل</div>
+          <div class="status status-miss">❌ غير متوفر</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCORING SUMMARY -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🔢</span>
+      Assessment Scoring Summary — كيف تم الاحتساب؟
+      <span class="line"></span>
+    </div>
+    <p style="font-size:.85rem; color:var(--muted); margin-bottom:18px;">
+      تم احتساب التقييم النهائي بناءً على مدى توفر العناصر الأساسية المطلوبة في أي استراتيجية وطنية للأداء العالي والبرامج الأولمبية.
+    </p>
+    <table class="score-table">
+      <thead>
+        <tr>
+          <th>المحور</th>
+          <th>الوزن</th>
+          <th>الوضع الحالي</th>
+          <th>التقييم</th>
+          <th>الدرجة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>تحليل الوضع الراهن (SWOT, Gap Analysis, Benchmarking)</td>
+          <td><span class="weight">15%</span></td>
+          <td>غير موجود</td>
+          <td><span class="tag tag-miss">❌</span></td>
+          <td><span class="pts score-red">0 / 15</span></td>
+        </tr>
+        <tr>
+          <td>الرؤية والأهداف الاستراتيجية</td>
+          <td><span class="weight">10%</span></td>
+          <td>غير موجودة بشكل قابل للقياس</td>
+          <td><span class="tag tag-miss">❌</span></td>
+          <td><span class="pts score-red">2 / 10</span></td>
+        </tr>
+        <tr>
+          <td>إدارة المواهب — Talent Development</td>
+          <td><span class="weight">15%</span></td>
+          <td>موجودة جزئياً عبر P28 / P32 / P36</td>
+          <td><span class="tag tag-warn">⚠️</span></td>
+          <td><span class="pts score-yel">8 / 15</span></td>
+        </tr>
+        <tr>
+          <td>الحوكمة — Governance</td>
+          <td><span class="weight">10%</span></td>
+          <td>تحديد مسؤولين فقط</td>
+          <td><span class="tag tag-warn">⚠️</span></td>
+          <td><span class="pts score-yel">4 / 10</span></td>
+        </tr>
+        <tr>
+          <td>مؤشرات الأداء — KPI</td>
+          <td><span class="weight">10%</span></td>
+          <td>غير موجود</td>
+          <td><span class="tag tag-miss">❌</span></td>
+          <td><span class="pts score-red">0 / 10</span></td>
+        </tr>
+        <tr>
+          <td>Baseline</td>
+          <td><span class="weight">10%</span></td>
+          <td>غير موجود</td>
+          <td><span class="tag tag-miss">❌</span></td>
+          <td><span class="pts score-red">0 / 10</span></td>
+        </tr>
+        <tr>
+          <td>إدارة المخاطر — Risk Management</td>
+          <td><span class="weight">10%</span></td>
+          <td>غير موجود</td>
+          <td><span class="tag tag-miss">❌</span></td>
+          <td><span class="pts score-red">0 / 10</span></td>
+        </tr>
+        <tr>
+          <td>Monitoring &amp; Evaluation</td>
+          <td><span class="weight">5%</span></td>
+          <td>محدود جداً</td>
+          <td><span class="tag tag-warn">⚠️</span></td>
+          <td><span class="pts score-yel">1 / 5</span></td>
+        </tr>
+        <tr>
+          <td>Data Analytics</td>
+          <td><span class="weight">5%</span></td>
+          <td>محدود جداً</td>
+          <td><span class="tag tag-warn">⚠️</span></td>
+          <td><span class="pts score-yel">1 / 5</span></td>
+        </tr>
+        <tr>
+          <td>التنفيذ التشغيلي (Selection, Camps, Competitions)</td>
+          <td><span class="weight">10%</span></td>
+          <td>جيد</td>
+          <td><span class="tag tag-ok">✅</span></td>
+          <td><span class="pts status-ok">8 / 10</span></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4" style="color:#a5b4fc;">المجموع الإجمالي</td>
+          <td><span style="color:var(--red); font-size:1.15rem; font-weight:900;">24 / 100</span></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="summary-stats">
+      <div class="stat-box">
+        <div class="sv score-red">24</div>
+        <div class="sl">مجموع النقاط المحققة</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv" style="color:var(--muted);">100</div>
+        <div class="sl">مجموع النقاط الممكنة</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv score-red">24%</div>
+        <div class="sl">نسبة اكتمال مكونات الاستراتيجية</div>
+      </div>
+      <div class="stat-box">
+        <div class="sv score-org">76%</div>
+        <div class="sl">نسبة العناصر المفقودة أو غير المكتملة</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CRITICAL GAPS -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🚨</span>
+      أولاً: الفجوات الحرجة — Critical Gaps
+      <span class="line"></span>
+    </div>
+    <div class="gaps-list">
+
+      <div class="gap-card critical">
+        <h4>
+          <span class="num">1</span>
+          غياب تحليل الوضع الراهن — Current State Analysis
+        </h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; flex-wrap:wrap;">
+          <div class="gap-sub">
+            <strong>لا يوجد في الوثيقة: على سبيل الميثال لا للحصر</strong>
+            <ul>
+              <li>تحليل نقاط القوة والضعف</li>
+              <li>الفرص والتهديدات (SWOT)</li>
+              <li>مستوى السباحة الحالي في المملكة</li>
+              <li>مقارنة السعودية بالدول المنافسة</li>
+            </ul>
+          </div>
+          <div class="gap-sub">
+            <strong>التأثير:</strong>
+            <ul>
+              <li>لا يمكن تحديد حجم الفجوة الأولمبية</li>
+              <li>لا يمكن تحديد الأولويات</li>
+              <li>لا يمكن توجيه الموارد بشكل صحيح</li>
+            </ul>
+          </div>
+        </div>
+        <span class="risk-badge risk-high">🔴 المخاطرة: مرتفعة جداً</span>
+      </div>
+
+      <div class="gap-card critical">
+        <h4><span class="num">2</span>غياب Baseline</h4>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="gap-sub">
+            <strong> لا يوجد خط أساس : على سبيل الميثال لا للحصر </strong>
+            <ul>
+              <li>عدد السباحين الحاليين</li>
+              <li>المستوى الفني للسباحين</li>
+              <li>عدد المؤهلين دولياً</li>
+              <li>عدد المدربين المؤهلين</li>
+            </ul>
+          </div>
+          <div class="gap-sub">
+            <strong>التأثير — لا يمكن قياس:</strong>
+            <ul>
+              <li>التحسن عبر الزمن</li>
+              <li>العائد من الاستثمار</li>
+              <li>فعالية البرنامج</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="gap-card critical">
+        <h4><span class="num">3</span>غياب مؤشرات الأداء — KPI</h4>
+        <div class="gap-sub">
+          <strong>غير موجود: على سبيل الميثال لا للحصر</strong>
+          <ul>
+            <li>عدد المتأهلين للبطولات المحلية والقارية والعالمية</li>
+            <li>عدد السباحين تحت معيار زمني محدد</li>
+            <li>نسبة التحسن السنوية</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">
+            بدون KPI لا يمكن معرفة: هل البرنامج ناجح؟ هل يتقدم؟ هل يتراجع؟
+          </p>
+        </div>
+      </div>
+
+      <div class="gap-card critical">
+        <h4><span class="num">4</span>غياب الأهداف الاستراتيجية</h4>
+        <div class="gap-sub">
+          <strong>الوثيقة تذكر 2028 و2032 و2036 لكن لا تحدد:</strong>
+          <ul>
+            <li>هل الهدف التأهل؟ نصف النهائي؟ النهائي؟ الميداليات؟</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">
+            التأثير: كل جهة ستفسر النجاح بطريقة مختلفة → تضارب في التوقعات.
+          </p>
+        </div>
+      </div>
+
+      <div class="gap-card critical">
+        <h4><span class="num">5</span>غياب الخارطة الزمنية — Olympic Roadmap</h4>
+        <div class="gap-sub">
+          <strong>لا يوجد مسار واضح:</strong>
+          <ul>
+            <li>2026 → 2028</li>
+            <li>2028 → 2032</li>
+            <li>2032 → 2036</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">
+            التأثير: عدم وضوح مسار التطوير وغياب المراحل المعرّفة.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- HIGH IMPACT GAPS -->
+  <section>
+    <div class="section-title">
+      <span class="icon">⚠️</span>
+      ثانياً: فجوات عالية التأثير
+      <span class="line"></span>
+    </div>
+    <div class="gaps-list">
+
+      <div class="gap-card high">
+        <h4><span class="num">6</span>غياب إدارة المخاطر — Risk Management</h4>
+        <div class="gap-sub">
+          <strong>لا يوجد Risk Register — ولا خطط للتعامل مع:</strong>
+          <strong>على سبيل الميثال لا للحصر</strong>
+          <ul>
+            <li>مخاطر الإصابات</li>
+            <li>مخاطر التمويل</li>
+            <li>مخاطر الدراسة والانقطاع</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">التأثير: البرنامج معرّض للفشل دون أي خطة استجابة.</p>
+        </div>
+      </div>
+
+      <div class="gap-card high">
+        <h4><span class="num">7</span>ضعف الحوكمة — Governance</h4>
+        <div class="gap-sub">
+          <strong>تم ذكر المسؤولين فقط — لكن لا يوجد:</strong>
+          <ul>
+            <li>هيكل اتخاذ القرار</li>
+            <li>لجان مراجعة فنية: على سبيل الميثال اللجنة الفنية</li>
+            <li>آليات اعتماد وصلاحيات</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gap-card high">
+        <h4><span class="num">8</span>غياب إدارة البيانات — Data Strategy</h4>
+        <div class="gap-sub">
+          <strong>لا يوجد:</strong>
+          <ul>
+            <li>Data Strategy</li>
+            <li>Performance Analytics</li>
+            <li>Monitoring & Evaluation System</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">التأثير: القرارات مبنية على الانطباعات وليس الأدلة.</p>
+        </div>
+      </div>
+
+      <div class="gap-card high">
+        <h4><span class="num">9</span>غياب نظام التقييم الدوري — Periodic Review System</h4>
+        <div class="gap-sub">
+          <strong>لا يوجد في الوثيقة أي آلية لمراجعة البرنامج بشكل دوري:</strong>
+          <ul>
+            <li>لا يوجد تقييم ربع سنوي لقياس مدى تحقيق المؤشرات المرحلية</li>
+            <li>لا يوجد تقييم نصف سنوي لمقارنة الأداء الفعلي بالمستهدف</li>
+            <li>لا يوجد تقييم سنوي شامل لمراجعة مسار البرنامج</li>
+            <li>لا توجد آلية لتعديل المسار عند الانحراف عن الأهداف</li>
+          </ul>
+          <p style="margin-top:10px; font-size:.84rem; color:var(--muted);">التأثير: لا يمكن معرفة ما إذا كان البرنامج يسير في الاتجاه الصحيح، ولا يمكن تصحيح المسار في الوقت المناسب.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- GAP ANALYSIS MATRIX -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🧮</span>
+      Gap Analysis Matrix
+      <span class="line"></span>
+    </div>
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th>المجال</th>
+          <th>الحالة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Vision / رؤية</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Mission / رسالة</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Strategic Objectives / أهداف استراتيجية</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>SWOT Analysis</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Baseline</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>KPI / مؤشرات أداء</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Risk Management</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Governance / حوكمة</td><td><span class="tag tag-warn">⚠️ جزئي</span></td></tr>
+        <tr><td>Talent Development</td><td><span class="tag tag-warn">⚠️ جزئي</span></td></tr>
+        <tr><td>Performance Analytics</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Olympic Roadmap</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Monitoring & Evaluation</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Periodic Review System / التقييم الدوري</td><td><span class="tag tag-miss">❌ غير متوفر</span></td></tr>
+        <tr><td>Athlete Selection / اختيار لاعبين</td><td><span class="tag tag-ok">✅ متوفر</span></td></tr>
+        <tr><td>Competition Planning</td><td><span class="tag tag-ok">✅ متوفر</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- HEAT MAP -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🌡️</span>
+      Heat Map — خريطة الحرارة
+      <span class="line"></span>
+    </div>
+    <div class="heatmap-grid">
+      <div class="heat-block heat-red">
+        <h4>🟥 حرج جداً</h4>
+        <ul>
+          <li>KPI / مؤشرات أداء</li>
+          <li>Baseline</li>
+          <li>Strategic Objectives</li>
+          <li>Olympic Roadmap</li>
+          <li>Risk Management</li>
+        </ul>
+      </div>
+      <div class="heat-block heat-org">
+        <h4>🟧 مرتفع</h4>
+        <ul>
+          <li>Governance / الحوكمة</li>
+          <li>Data Analytics</li>
+          <li>Periodic Review System</li>
+        </ul>
+      </div>
+      <div class="heat-block heat-grn">
+        <h4>🟩 جيد</h4>
+        <ul>
+          <li>Athlete Identification</li>
+          <li>Selection Standards</li>
+          <li>Programme Logistics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MATURITY -->
+  <section>
+    <div class="section-title">
+      <span class="icon">📈</span>
+      Strategic Maturity Assessment — النضج الاستراتيجي
+      <span class="line"></span>
+    </div>
+    <div class="maturity-list">
+      <div class="maturity-item">
+        <div class="mlabel">Strategy / الاستراتيجية</div>
+        <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+        <div class="mscore">1 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Governance / الحوكمة</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%"></div></div>
+        <div class="mscore">2 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Talent Pathway</div>
+        <div class="bar-track"><div class="bar-fill" style="width:40%"></div></div>
+        <div class="mscore">2 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Performance System</div>
+        <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+        <div class="mscore">1 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Monitoring</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+        <div class="mscore">0 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Risk Management</div>
+        <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+        <div class="mscore">0 / 5</div>
+      </div>
+      <div class="maturity-item">
+        <div class="mlabel">Olympic Planning</div>
+        <div class="bar-track"><div class="bar-fill" style="width:20%"></div></div>
+        <div class="mscore">1 / 5</div>
+      </div>
+    </div>
+    <div style="margin-top:20px; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 24px; display:flex; align-items:center; gap:16px;">
+      <div style="font-size:2rem; font-weight:900; color:var(--orange);">1.1<span style="font-size:1rem; color:var(--muted);"> / 5</span></div>
+      <div style="font-size:.85rem; color:var(--muted);">النتيجة الإجمالية للنضج الاستراتيجي — <span style="color:var(--orange);">مستوى مبكر جداً</span></div>
+    </div>
+    <div class="stage-card">
+      <div class="stage-badge">Initial / Foundational Stage</div>
+      <div class="stage-desc">
+        متوسط النضج <strong style="color:var(--orange);">1.1 / 5</strong> يضع الوثيقة في المرحلة الأولى:
+        <strong style="color:#fff;">برنامج تشغيلي أولي</strong> وليس نظام أداء عالي متكامل.
+        المرحلة الأولى تتطلب بناء الأسس (Baseline, KPI, Governance) قبل الانتقال إلى مستوى التخطيط الاستراتيجي الفعلي.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Q&A -->
+  <section>
+    <div class="section-title">
+      <span class="icon">❓</span>
+      الأسئلة الاستراتيجية الخمس
+      <span class="line"></span>
+    </div>
+    <div class="qa-block">
+      <div class="qa-row">
+        <div class="qa-col miss">
+          <h4>ما لا تُجيب عنه الوثيقة</h4>
+          <ul>
+            <li>أين نحن اليوم؟</li>
+            <li>أين نريد الوصول؟</li>
+            <li>كيف سنصل؟</li>
+            <li>متى سنصل؟</li>
+            <li>كيف سنقيس النجاح؟</li>
+          </ul>
+        </div>
+        <div class="qa-col ok">
+          <h4>ما تُجيب عنه الوثيقة</h4>
+          <ul>
+            <li>من سيتم اختياره؟</li>
+            <li>ما هي أزمنة التأهل؟</li>
+            <li>ما هي المعسكرات المقترحة؟</li>
+            <li>ما شروط الأهلية؟</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- RISKS -->
+  <section>
+    <div class="section-title">
+      <span class="icon">⛔</span>
+      أهم المخاطر المستقبلية
+      <span class="line"></span>
+    </div>
+    <table class="risks-table">
+      <thead>
+        <tr>
+          <th>الخطر</th>
+          <th>التأثير</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>غياب KPI</td><td>استحالة قياس النجاح</td></tr>
+        <tr><td>غياب Baseline</td><td>استحالة قياس التطور والتحسن</td></tr>
+        <tr><td>غياب Olympic Roadmap</td><td>تنفيذ عشوائي بلا توجيه</td></tr>
+        <tr><td>غياب Risk Management</td><td>ارتفاع احتمالية الفشل المفاجئ</td></tr>
+        <tr><td>ضعف الحوكمة</td><td>ضعف المساءلة وتضارب القرارات</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- PROBABILITIES -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🎯</span>
+      احتمالية تحقيق الأهداف الأولمبية
+      <span class="line"></span>
+    </div>
+    <p style="font-size:.85rem; color:var(--muted); margin-bottom:16px;">مبررات الاحتمالية — العوامل المؤثرة في نسبة النجاح:</p>
+    <table class="factors-table">
+      <thead>
+        <tr>
+          <th>العامل</th>
+          <th>الوضع</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>نظام اختيار اللاعبين</td><td><span class="tag tag-ok">✅ موجود</span></td></tr>
+        <tr><td>معايير الأداء</td><td><span class="tag tag-ok">✅ موجود</span></td></tr>
+        <tr><td>المعسكرات والمنافسات</td><td><span class="tag tag-ok">✅ موجود</span></td></tr>
+        <tr><td>الأهداف الاستراتيجية</td><td><span class="tag tag-miss">❌ غير موجود</span></td></tr>
+        <tr><td>KPI</td><td><span class="tag tag-miss">❌ غير موجود</span></td></tr>
+        <tr><td>Baseline</td><td><span class="tag tag-miss">❌ غير موجود</span></td></tr>
+        <tr><td>إدارة المخاطر</td><td><span class="tag tag-miss">❌ غير موجود</span></td></tr>
+        <tr><td>الحوكمة</td><td><span class="tag tag-warn">⚠️ جزئية</span></td></tr>
+        <tr><td>إدارة البيانات</td><td><span class="tag tag-warn">⚠️ جزئية</span></td></tr>
+        <tr><td>خارطة الطريق الأولمبية</td><td><span class="tag tag-miss">❌ غير موجودة</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="prob-grid">
+      <!-- 2028 -->
+      <div class="prob-card">
+        <svg width="90" height="90" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/>
+          <circle cx="45" cy="45" r="38" fill="none" stroke="#ef4444" stroke-width="9"
+            stroke-dasharray="238.76" stroke-dashoffset="155.2"
+            stroke-linecap="round" transform="rotate(-90 45 45)"/>
+          <text x="45" y="51" text-anchor="middle" fill="#ef4444" font-size="16" font-weight="900" font-family="Cairo">35%</text>
+        </svg>
+        <div class="year">أولمبياد 2028</div>
+        <div class="pct score-red">35%</div>
+      </div>
+      <!-- 2032 -->
+      <div class="prob-card">
+        <svg width="90" height="90" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/>
+          <circle cx="45" cy="45" r="38" fill="none" stroke="#f97316" stroke-width="9"
+            stroke-dasharray="238.76" stroke-dashoffset="179.07"
+            stroke-linecap="round" transform="rotate(-90 45 45)"/>
+          <text x="45" y="51" text-anchor="middle" fill="#f97316" font-size="16" font-weight="900" font-family="Cairo">25%</text>
+        </svg>
+        <div class="year">أولمبياد 2032</div>
+        <div class="pct score-org">25%</div>
+      </div>
+      <!-- 2036 -->
+      <div class="prob-card">
+        <svg width="90" height="90" viewBox="0 0 90 90">
+          <circle cx="45" cy="45" r="38" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/>
+          <circle cx="45" cy="45" r="38" fill="none" stroke="#eab308" stroke-width="9"
+            stroke-dasharray="238.76" stroke-dashoffset="191.01"
+            stroke-linecap="round" transform="rotate(-90 45 45)"/>
+          <text x="45" y="51" text-anchor="middle" fill="#eab308" font-size="16" font-weight="900" font-family="Cairo">20%</text>
+        </svg>
+        <div class="year">أولمبياد 2036</div>
+        <div class="pct score-yel">20%</div>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size:.82rem; color:var(--muted); text-align:center; max-width:600px; margin-inline:auto;">
+      هذه الاحتماليات تفترض <strong style="color:#fff;">استمرار البرنامج بصيغته الحالية</strong>. إذا تم تحويله إلى برنامج وطني حقيقي يتضمن KPI وBaseline وTalent Pathway وSports Science وRisk Management، فقد ترتفع الاحتمالية بشكل ملحوظ.
+    </p>
+  </section>
+
+
+  <!-- FINAL -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🏁</span>
+      التقييم النهائي
+      <span class="line"></span>
+    </div>
+    <div class="final-grid">
+      <div class="final-card">
+        <div class="ring ring-red">
+          <div class="ring-inner" style="color:var(--red);">32</div>
+        </div>
+        <div class="big score-red">32 / 100</div>
+        <div class="desc">تقييم المشروع الإجمالي</div>
+      </div>
+      <div class="final-card">
+        <div style="font-size:3rem; margin-bottom:12px;">📊</div>
+        <div class="big score-org">1.1 / 5</div>
+        <div class="desc">مستوى النضج الاستراتيجي</div>
+      </div>
+      <div class="final-card">
+        <div style="font-size:3rem; margin-bottom:12px;">🏊</div>
+        <div class="big score-red">35%</div>
+        <div class="desc">احتمالية تحقيق أهداف 2028</div>
+      </div>
+      <div class="final-card">
+        <div style="font-size:3rem; margin-bottom:12px;">📋</div>
+        <div class="big" style="color:#a78bfa;">Policy</div>
+        <div class="desc">تصنيف الوثيقة الفعلي — سياسة اختيار لا استراتيجية وطنية</div>
+      </div>
+    </div>
+
+    <!-- DUAL SCENARIO -->
+    <div class="section-title" style="margin-top:40px;">
+      <span class="icon">🔀</span>
+      تفسير التقييم — السيناريوهان
+      <span class="line"></span>
+    </div>
+    <div class="dual-grid">
+
+
+
+
+
+
+
+
+      <div class="scenario-card strategy">
+
+        <div class="sc-score">32 / 100</div>
+        <p style="font-size:.8rem; color:var(--muted); margin-bottom:12px;">تفتقر إلى:</p>
+        <ul>
+          <li>SWOT وتحليل الوضع الراهن</li>
+          <li>Baseline وKPI</li>
+          <li>Olympic Roadmap</li>
+          <li>Risk Management</li>
+          <li>Performance Analytics</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  تقرير تقييم البرنامج الوطني — السباحة السعودية &nbsp;|&nbsp; 2026
+</footer>
+
+</body>
+</html>
