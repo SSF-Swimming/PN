@@ -595,6 +595,52 @@
     .scenario-card ul li { font-size: .82rem; padding-right: 16px; position: relative; color: var(--muted); }
     .scenario-card.policy   ul li::before { content: '✓'; position: absolute; right: 0; color: var(--green); }
     .scenario-card.strategy ul li::before { content: '✗'; position: absolute; right: 0; color: var(--red); }
+
+    /* ── SECOND REPORT: EXTRA VARIANTS ── */
+    .gap-card.info    { border-right-color: var(--accent); }
+    .gap-card.info h4 .num { background: rgba(59,130,246,.2); color: var(--accent); }
+    .gap-card.neutral { border-right-color: var(--accent2); }
+    .gap-card.neutral h4 .num { background: rgba(99,102,241,.2); color: var(--accent2); }
+    .risk-badge.risk-med { background: rgba(249,115,22,.15); color: var(--orange); border: 1px solid rgba(249,115,22,.3); }
+    .heat-blue { background: rgba(59,130,246,.08); border-color: rgba(59,130,246,.3); }
+    .heat-blue h4 { color: var(--accent); }
+    .heat-blue li { background: rgba(59,130,246,.1); }
+    .report-divider {
+      margin: 70px 0 45px;
+      padding: 40px 30px;
+      background: linear-gradient(135deg, rgba(99,102,241,.12), rgba(99,102,241,.03));
+      border: 1px solid rgba(99,102,241,.35);
+      border-radius: 20px;
+      text-align: center;
+    }
+    .report-divider .badge {
+      display: inline-block;
+      background: rgba(99,102,241,.15);
+      border: 1px solid rgba(99,102,241,.4);
+      color: #a5b4fc;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: .8rem;
+      letter-spacing: 1px;
+    }
+    .report-divider h2 {
+      font-size: clamp(1.25rem, 3vw, 1.9rem);
+      font-weight: 900;
+      color: #fff;
+      margin: 16px 0 10px;
+    }
+    .report-divider p {
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: .9rem;
+    }
+    .intro-text { font-size: .92rem; color: var(--text); line-height: 1.9; margin-bottom: 12px; }
+    .sub-heading { font-size: .85rem; font-weight: 700; color: var(--muted); margin-bottom: 10px; }
+
+    @media (max-width: 768px) {
+      .report-divider { padding: 26px 18px; margin: 48px 0 30px; }
+    }
   </style>
 </head>
 <body>
@@ -1330,10 +1376,314 @@
     </div>
   </section>
 
+
+  <!-- ================= SECOND REPORT DIVIDER ================= -->
+  <div class="report-divider">
+    <div class="badge">تقرير مستقل — إداري وفني</div>
+    <h2>تقرير فني وإداري حول بعض القرارات المتعلقة بإدارة <span style="color:var(--accent2)">برنامج النخبة للسباحة</span> لعام 2026</h2>
+    <p>مراجعة مهنية وموضوعية لعدد من القرارات الفنية والإدارية المتعلقة ببرنامج النخبة خلال عام 2026، وتحليل آثارها على نتائج المنتخبات الوطنية وآلية إعداد اللاعبين وإدارة البرنامج، مع تقديم توصيات عملية لتطوير العمل.</p>
+  </div>
+
+
+  <!-- I. INTRODUCTION -->
+  <section>
+    <div class="section-title">
+      <span class="icon">📄</span>
+      أولاً: المقدمة
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      بناءً على مراجعة عدد من القرارات الفنية والإدارية المتعلقة ببرنامج النخبة خلال عام 2026، وما نتج عنها من آثار على نتائج المنتخبات الوطنية وآلية إعداد اللاعبين وإدارة البرنامج، تم إعداد هذا التقرير بهدف عرض الوقائع بصورة مهنية وموضوعية، وتحليل آثارها الفنية والإدارية، مع تقديم توصيات عملية تساهم في تطوير العمل وضمان تحقيق أهداف الاتحاد السعودي للسباحة.
+    </p>
+  </section>
+
+
+  <!-- II. GULF CHAMPIONSHIP -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🏆</span>
+      ثانياً: المشاركة في بطولة الخليج
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      شارك المنتخب السعودي في بطولة الخليج بعدد أقل من السباحين الأساسيين، في حين شارك عدد من أفضل السباحين في بطولة دبي المفتوحة، وهي بطولة لا تندرج ضمن البطولات الرسمية المعتمدة، ولم تكن مرتبطة بأي هدف استراتيجي أو تأهيلي للمنتخب الوطني.
+    </p>
+    <p class="intro-text">
+      كما لوحظ أنه تم منح عدد من اللاعبين حرية الاختيار بين المشاركة في بطولة الخليج أو المشاركة في بطولة دبي المفتوحة، رغم أن بطولة الخليج تمثل الاستحقاق الرسمي للمنتخب الوطني، بينما تعد بطولة دبي بطولة غير رسمية. ويخالف هذا الإجراء الأسس المتبعة في إدارة المنتخبات الوطنية، حيث يتم تحديد المشاركات وفق الخطة الفنية المعتمدة وبما يخدم مصلحة المنتخب الوطني، وليس بناءً على رغبة اللاعب في اختيار البطولة.
+    </p>
+    <p class="intro-text">
+      وقد تم قبل البطولة توضيح أهمية إعطاء الأولوية لبطولة الخليج باعتبارها البطولة الرسمية المستهدفة للمنتخب، مع إمكانية تعويض المشاركة في بطولة دبي في بطولات أخرى.
+    </p>
+
+    <div class="gaps-list" style="margin-top:20px;">
+      <div class="gap-card critical">
+        <h4><span class="num">1</span>الأثر الفني والملاحظات</h4>
+        <div class="gap-inner-grid">
+          <div class="gap-sub">
+            <strong>ترتب على ذلك:</strong>
+            <ul>
+              <li>مشاركة المنتخب في بطولة الخليج دون كامل عناصره الأساسية</li>
+              <li>انخفاض القدرة التنافسية للمنتخب مقارنة ببقية المنتخبات</li>
+              <li>فقدان فرصة تحقيق المركز الأول</li>
+              <li>تحقيق المركز الثاني في الترتيب العام للدول المشاركة</li>
+            </ul>
+          </div>
+          <div class="gap-sub">
+            <strong>الملاحظات:</strong>
+            <ul>
+              <li>من المبادئ الأساسية في التخطيط الرياضي إعطاء الأولوية للبطولات الرسمية ذات القيمة الفنية والاستراتيجية، خصوصاً عند تعارض برنامج المنافسات</li>
+              <li>لم يظهر وجود دراسة فنية أو تحليل مخاطر يوضح أسباب تفضيل بطولة غير رسمية على بطولة خليجية رسمية</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:12px; font-size:.84rem; color:var(--muted);">
+          يكتسب هذا الأمر أهمية خاصة بالنظر إلى أن الاتحاد السعودي لم يحقق لقب بطولة الخليج منذ ما يقارب 25 عاماً، الأمر الذي يجعل اختيار أولويات المشاركات عاملاً أساسياً في التخطيط الفني.
+        </p>
+        <span class="risk-badge risk-high">🔴 فقدان فرصة لقب لم يتحقق منذ 25 عاماً</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- III. GULF GAMES -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🎮</span>
+      ثالثاً: المشاركة في دورة الألعاب الخليجية
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      قرر مدير برنامج النخبة عدم إشراك أفضل السباحين في دورة الألعاب الخليجية. وكان التبرير المقدم هو أن الهدف الرئيسي للبرنامج يتمثل في الإعداد لدورة الألعاب الآسيوية المقررة بتاريخ 19 سبتمبر 2026.
+    </p>
+    <p class="intro-text">
+      وخلال مناقشة الموضوع، أوضحت اللجنة الفنية أن الفترة الزمنية الفاصلة بين البطولتين كافية لإعادة إعداد اللاعبين، وأن المشاركة في الألعاب الخليجية لا تشكل عائقاً أمام تحقيق الجاهزية للألعاب الآسيوية إذا تم التخطيط للحمل التدريبي بصورة صحيحة.
+    </p>
+    <p class="intro-text">
+      ورغم ذلك، شارك المنتخب في البطولة دون تنفيذ مرحلة تخفيض الأحمال (Taper)، وهي مرحلة تعد من الأسس العلمية للإعداد للمنافسات الرئيسية.
+    </p>
+
+    <div class="gaps-list" style="margin-top:20px;">
+      <div class="gap-card high">
+        <h4><span class="num">2</span>الأثر الفني</h4>
+        <div class="gap-sub">
+          <ul>
+            <li>انخفاض المستوى الرقمي للسباحين</li>
+            <li>ظهور نتائج أقل من المستوى الحقيقي للمنتخب</li>
+            <li>عدم استثمار البطولة بالشكل الذي يعكس التطور الفني للسباحين</li>
+            <li>فقدان فرصة المنافسة على عدد أكبر من الميداليات</li>
+          </ul>
+        </div>
+        <p style="margin-top:12px; font-size:.84rem; color:var(--muted);">
+          من المعروف في علم التدريب الرياضي أن الدخول في المنافسات الرئيسية دون تطبيق برنامج تخفيض الأحمال يؤدي غالباً إلى انخفاض الأداء مقارنة بالمستوى المتوقع.
+        </p>
+        <span class="risk-badge risk-med">🟠 غياب مرحلة Taper قبل بطولة رئيسية</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- IV. SELECTION REGULATION -->
+  <section>
+    <div class="section-title">
+      <span class="icon">📋</span>
+      رابعاً: لائحة اختيار لاعبي المنتخب الوطني
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      قام مدير برنامج النخبة بإعداد مشروع لائحة اختيار لاعبي المنتخب الوطني وإرسالها إلى اللجنة الفنية لدراستها واعتمادها. وبعد المراجعة، تبين للجنة الفنية أن اللائحة اعتمدت بصورة شبه كاملة على لائحة الاتحاد الإيرلندي للسباحة، مع إجراء تعديلات جوهرية تمنح مدير برنامج النخبة صلاحيات واسعة في اتخاذ قرارات الاختيار، دون وجود ضوابط أو آليات رقابية كافية.
+    </p>
+
+    <div class="gaps-list" style="margin-top:20px;">
+      <div class="gap-card info">
+        <h4><span class="num">3</span>الملاحظات والمخاطر</h4>
+        <div class="gap-inner-grid">
+          <div class="gap-sub">
+            <strong>لا مانع من الاستفادة من اللوائح الدولية، شريطة:</strong>
+            <ul>
+              <li>مواءمة اللائحة مع الأنظمة السعودية</li>
+              <li>مراعاة هيكل الحوكمة داخل الاتحاد</li>
+              <li>توزيع الصلاحيات بين الجهات المختصة</li>
+              <li>ضمان الشفافية والحيادية</li>
+              <li>توفير آليات واضحة للتظلم والاستئناف</li>
+            </ul>
+          </div>
+          <div class="gap-sub">
+            <strong>المخاطر — تركيز صلاحيات الاختيار لدى شخص واحد قد يؤدي إلى:</strong>
+            <ul>
+              <li>ضعف الشفافية</li>
+              <li>تضارب المصالح</li>
+              <li>غياب الحوكمة</li>
+              <li>انخفاض ثقة اللاعبين والأندية</li>
+              <li>زيادة الاعتراضات والنزاعات</li>
+            </ul>
+          </div>
+        </div>
+        <span class="risk-badge risk-high">🔴 صلاحيات اختيار واسعة دون ضوابط رقابية كافية</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- V. EQUAL OPPORTUNITY -->
+  <section>
+    <div class="section-title">
+      <span class="icon">⚖️</span>
+      خامساً: تكافؤ فرص إعداد اللاعبين
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      من خلال مراجعة البرنامج الفني منذ 1 يناير 2026، تبين وجود تركيز واضح على مجموعة محدودة تضم نحو ستة سباحين، في حين لم تحظ بقية الفئات العمرية بفرص إعداد مماثلة.
+    </p>
+
+    <div class="dual-grid">
+      <div>
+        <div class="sub-heading">برنامج لاعبي العمومي</div>
+        <table class="matrix-table">
+          <thead><tr><th>الفعالية</th><th>التاريخ</th></tr></thead>
+          <tbody>
+            <tr><td>بطولة دبي</td><td>06/02/2026</td></tr>
+            <tr><td>معسكر إسبانيا</td><td>18/02/2026</td></tr>
+            <tr><td>الألعاب الخليجية</td><td>12/05/2026</td></tr>
+            <tr><td>بطولة لندن</td><td>21/05/2026</td></tr>
+            <tr><td>بطولة إسبانيا</td><td>30/05/2026</td></tr>
+            <tr><td>بطولة إيطاليا</td><td>26/06/2026</td></tr>
+            <tr><td>معسكر تركيا (مقرر)</td><td>10/08/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="sub-heading">بقية الفئات العمرية</div>
+        <table class="matrix-table">
+          <thead><tr><th>الفعالية</th><th>التاريخ</th></tr></thead>
+          <tbody>
+            <tr><td>بطولة دبي</td><td>06/02/2026</td></tr>
+            <tr><td>بطولة لندن</td><td>21/05/2026</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px; font-size:.82rem; color:var(--muted);">دون وجود برنامج متوازن من المعسكرات والمنافسات الخارجية.</p>
+      </div>
+    </div>
+
+    <div class="gaps-list" style="margin-top:24px;">
+      <div class="gap-card critical">
+        <h4><span class="num">4</span>الأثر الفني</h4>
+        <div class="gap-sub">
+          <ul>
+            <li>تفاوت واضح في فرص التطوير</li>
+            <li>بطء تطور الفئات السنية</li>
+            <li>ضعف قاعدة المنتخب الوطني</li>
+            <li>تقليل عدد اللاعبين القادرين على تمثيل المملكة مستقبلاً</li>
+            <li>الاعتماد على عدد محدود من الرياضيين</li>
+          </ul>
+        </div>
+        <p style="margin-top:12px; font-size:.84rem; color:var(--muted);">
+          تقوم برامج النخبة الحديثة على توسيع قاعدة اللاعبين، وليس التركيز على مجموعة محدودة فقط، بما يضمن استدامة النتائج على المدى المتوسط والبعيد.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VI. ADMINISTRATIVE CHAIN OF COMMAND -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🔗</span>
+      سادساً: التسلسل الإداري في التواصل
+      <span class="line"></span>
+    </div>
+    <div class="gaps-list">
+      <div class="gap-card high">
+        <h4><span class="num">5</span>ممارسات ملاحظة وأثرها الإداري</h4>
+        <div class="gap-inner-grid">
+          <div class="gap-sub">
+            <strong>الممارسات الملاحظة:</strong>
+            <ul>
+              <li>التواصل المباشر مع اللاعبين دون إشعار المدربين</li>
+              <li>التواصل مع اللاعبين دون علم إدارة الاتحاد في بعض الحالات</li>
+              <li>التواصل المباشر مع المدربين دون المرور بالقنوات الإدارية المعتمدة</li>
+              <li>تجاوز التسلسل الإداري في بعض الموضوعات الفنية والتنظيمية</li>
+            </ul>
+          </div>
+          <div class="gap-sub">
+            <strong>الأثر الإداري:</strong>
+            <ul>
+              <li>إضعاف دور الأجهزة الفنية</li>
+              <li>حدوث تضارب في التعليمات</li>
+              <li>ضعف التنسيق بين الإدارات</li>
+              <li>خلق قنوات اتصال متوازية</li>
+              <li>زيادة احتمالية سوء الفهم بين مختلف الأطراف</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- VII. GENERAL CONCLUSION -->
+  <section>
+    <div class="section-title">
+      <span class="icon">🧾</span>
+      سابعاً: الاستنتاج العام
+      <span class="line"></span>
+    </div>
+    <p class="intro-text">
+      تشير الوقائع الواردة في هذا التقرير إلى وجود عدد من الملاحظات الفنية والإدارية التي أثرت على تنفيذ برنامج النخبة خلال عام 2026، ويمكن تلخيصها في المحاور التالية:
+    </p>
+    <div class="heat-block heat-blue" style="margin-top:16px;">
+      <h4>📌 أبرز المحاور</h4>
+      <ul>
+        <li>عدم وضوح أولويات المشاركات الدولية بما يخدم أهداف المنتخب الوطني</li>
+        <li>اتخاذ بعض القرارات الفنية دون وجود مبررات أو دراسات فنية موثقة</li>
+        <li>عدم تحقيق التوازن في فرص إعداد اللاعبين بين مختلف الفئات</li>
+        <li>الحاجة إلى تعزيز مبادئ الحوكمة والشفافية في لوائح اختيار المنتخبات</li>
+        <li>وجود ممارسات في التواصل الإداري لا تنسجم مع التسلسل الإداري المعتمد داخل الاتحاد</li>
+        <li>الحاجة إلى تعزيز دور اللجنة الفنية في مراجعة واعتماد القرارات الفنية ذات الأثر الاستراتيجي</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- VIII. RECOMMENDATIONS -->
+  <section>
+    <div class="section-title">
+      <span class="icon">✅</span>
+      ثامناً: التوصيات
+      <span class="line"></span>
+    </div>
+    <div class="gaps-list">
+      <div class="gap-card neutral">
+        <h4><span class="num">1</span>اعتماد سياسة واضحة لترتيب أولويات المشاركات الدولية، بحيث تمنح البطولات الرسمية الأولوية على البطولات غير الرسمية.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">2</span>إلزام جميع القرارات الفنية المؤثرة بإرفاق دراسة فنية مكتوبة تتضمن الأهداف والمبررات والنتائج المتوقعة قبل اعتمادها.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">3</span>إعادة مراجعة لائحة اختيار لاعبي المنتخب الوطني بما يتوافق مع مبادئ الحوكمة والشفافية، مع توزيع الصلاحيات بين اللجنة الفنية والجهات المختصة، ووضع آلية واضحة للتظلمات.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">4</span>إعداد خطة سنوية متوازنة تضمن تكافؤ فرص الإعداد لجميع الفئات العمرية وفق معايير فنية معلنة.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">5</span>اعتماد مؤشرات أداء رئيسية (KPIs) لقياس نجاح برنامج النخبة، تشمل النتائج الفنية، وعدد اللاعبين المؤهلين، وتطور المستويات الرقمية، وعدالة فرص المشاركة.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">6</span>التأكيد على الالتزام بالتسلسل الإداري في جميع أشكال التواصل مع اللاعبين والمدربين والأندية، وعدم تجاوز القنوات الرسمية إلا في الحالات الاستثنائية التي تعتمدها إدارة الاتحاد.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">7</span>تعزيز دور اللجنة الفنية في مراجعة الخطط الفنية والبرامج السنوية قبل تنفيذها، بما يضمن توافقها مع أهداف الاتحاد وخططه الاستراتيجية.</h4>
+      </div>
+      <div class="gap-card neutral">
+        <h4><span class="num">8</span>إجراء تقييم دوري ربع سنوي لبرنامج النخبة، يتضمن مراجعة الإنجازات، وتحليل الانحرافات، ووضع الإجراءات التصحيحية اللازمة لضمان التطوير المستمر.</h4>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <footer>
-  تقرير تقييم البرنامج الوطني — السباحة السعودية &nbsp;|&nbsp; 2026
+  تقرير تقييم البرنامج الوطني — السباحة السعودية &nbsp;|&nbsp; 2026<br/>
+  تقرير فني وإداري حول قرارات برنامج النخبة للسباحة &nbsp;|&nbsp; 2026
 </footer>
 
 </body>
